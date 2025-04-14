@@ -1,75 +1,120 @@
 using UnityEngine;
-using TMPro; // или using UnityEngine.UI;
+using TMPro; // Если подсказка - TextMeshPro
+// using UnityEngine.UI; // Если подсказка - обычный Text/Image
 
 public class GateController : MonoBehaviour
 {
-    [Header("Ссылки на Створки")]
+    [Header("Ссылки на Створки и Аниматоры")]
     [Tooltip("Аниматор левой створки ворот")]
     public Animator leftDoorAnimator;
     [Tooltip("Аниматор правой створки ворот")]
     public Animator rightDoorAnimator;
 
-    [Header("UI и Анимация")]
-    [Tooltip("UI текст подсказки для ворот (Найти рычаг)")]
-    public GameObject gateHintUI;
-    [Tooltip("Имя триггера для анимации открытия створок")]
-    public string openTriggerName = "OpenTrigger"; // Имя из Шага 1
+    [Header("Ссылки на UI")]
+    [Tooltip("UI элемент (GameObject) с текстом 'Активируйте два рычага...'")]
+    public GameObject activationHintUI;
 
-    private bool isGateOpen = false; // Флаг, что ворота уже открыты
+    [Header("Настройки Анимации")]
+    [Tooltip("Имя триггера в аниматорах створок для открытия")]
+    public string openAnimationTrigger = "Open";
+
+    [Header("Настройки Взаимодействия")]
+    [Tooltip("Сколько всего рычагов должно быть активировано")]
+    public int requiredLevers = 2; // Можно изменить, если рычагов будет больше/меньше
+    [Tooltip("Тег игрока")]
+    public string playerTag = "Player";
+
+    // Состояние
+    private int activatedLeverCount = 0; // Счетчик активированных рычагов
+    private bool isOpen = false;         // Ворота уже открыты?
+    private bool playerInZone = false;   // Игрок в триггерной зоне ворот?
 
     void Start()
     {
-        // Убедимся, что подсказка скрыта при старте
-        if (gateHintUI != null)
-            gateHintUI.SetActive(false);
+        // Проверки
+        if (leftDoorAnimator == null || rightDoorAnimator == null)
+            Debug.LogError("Не назначены аниматоры створок ворот!", this);
+        if (activationHintUI == null)
+            Debug.LogWarning("Не назначен UI элемент подсказки для ворот.", this);
+        else
+            activationHintUI.SetActive(false); // Скрыть подсказку при старте
+
+        // Убедимся, что есть коллайдер-триггер
+        Collider col = GetComponent<Collider>();
+        if (col == null || !col.isTrigger)
+            Debug.LogError("На родительском объекте ворот отсутствует Collider или он не является триггером!", this);
     }
 
-    // Публичный метод, который будет вызываться рычагом
-    public void OpenTheGate()
+    // Публичный метод, вызываемый из LeverController
+    public void NotifyLeverActivated(int leverID)
     {
-        if (!isGateOpen)
+        // Проверяем, не открыты ли ворота уже и не получили ли мы уже сигнал от этого рычага
+        // (Для простоты сейчас просто увеличиваем счетчик, но можно добавить проверку ID,
+        // чтобы один рычаг не засчитался дважды, если что-то пойдет не так)
+        if (!isOpen)
         {
-            Debug.Log("Получена команда на открытие ворот!");
-            isGateOpen = true;
+            activatedLeverCount++;
+            Debug.Log($"Получено уведомление от рычага {leverID}. Всего активировано: {activatedLeverCount}/{requiredLevers}");
 
-            // Запускаем анимацию обеих створок
-            if (leftDoorAnimator != null)
-                leftDoorAnimator.SetTrigger(openTriggerName);
-            else Debug.LogError("Аниматор левой створки не назначен в GateController!");
-
-            if (rightDoorAnimator != null)
-                rightDoorAnimator.SetTrigger(openTriggerName);
-            else Debug.LogError("Аниматор правой створки не назначен в GateController!");
-
-            // Скрываем подсказку у ворот навсегда
-            if (gateHintUI != null)
-                gateHintUI.SetActive(false);
-
-            // Можно деактивировать сам триггер, чтобы он больше не срабатывал
-            gameObject.GetComponent<Collider>().enabled = false;
-            // Или полностью деактивировать объект триггера
-            // gameObject.SetActive(false);
+            // Проверяем, достаточно ли рычагов активировано
+            if (activatedLeverCount >= requiredLevers)
+            {
+                OpenGate();
+            }
         }
     }
 
-    // --- Логика показа/скрытия подсказки ---
+    // Логика открытия ворот
+    private void OpenGate()
+    {
+        if (isOpen) return; // Уже открыты
+
+        isOpen = true;
+        Debug.Log("Все рычаги активированы! Открываем ворота...");
+
+        // 1. Запускаем анимации створок
+        if (leftDoorAnimator != null && !string.IsNullOrEmpty(openAnimationTrigger))
+            leftDoorAnimator.SetTrigger(openAnimationTrigger);
+        if (rightDoorAnimator != null && !string.IsNullOrEmpty(openAnimationTrigger))
+            rightDoorAnimator.SetTrigger(openAnimationTrigger);
+
+        // 2. Гарантированно скрываем UI подсказку
+        if (activationHintUI != null)
+            activationHintUI.SetActive(false);
+
+        // Опционально: отключаем триггер ворот, чтобы подсказка больше не появлялась
+        // Collider col = GetComponent<Collider>();
+        // if (col != null) col.enabled = false;
+        // Или можно просто положиться на флаг isOpen в OnTriggerEnter/Exit
+    }
+
+    // Когда игрок входит в триггер ворот
     private void OnTriggerEnter(Collider other)
     {
-        // Если ворота ЕЩЕ НЕ открыты и вошел игрок
-        if (!isGateOpen && other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
-            if (gateHintUI != null)
-                gateHintUI.SetActive(true); // Показываем подсказку "Найди рычаг"
+            playerInZone = true;
+            // Показываем подсказку ТОЛЬКО если ворота еще НЕ открыты
+            if (!isOpen && activationHintUI != null)
+            {
+                activationHintUI.SetActive(true);
+                Debug.Log("Игрок вошел в зону закрытых ворот - показываем подсказку.");
+            }
         }
     }
 
+    // Когда игрок выходит из триггера ворот
     private void OnTriggerExit(Collider other)
     {
-        // Если вошел игрок (неважно, открыты ворота или нет, подсказка должна скрыться при выходе)
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
-            if (gateHintUI != null)
-                gateHintUI.SetActive(false); // Скрываем подсказку
+            playerInZone = false;
+            // Скрываем подсказку, если она была видна
+            if (activationHintUI != null && activationHintUI.activeSelf)
+            {
+                activationHintUI.SetActive(false);
+                Debug.Log("Игрок вышел из зоны ворот - скрываем подсказку.");
+            }
         }
     }
 }

@@ -367,6 +367,8 @@
 "Assets/Scripts/PlayerInput.cs"
 "Assets/Scripts/PlayerInteractionHandler.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/PuzzleGateOpener.cs"
+"Assets/Scripts/RotatingPlate.cs"
 "Assets/Scripts/TargetObjectCollider.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
