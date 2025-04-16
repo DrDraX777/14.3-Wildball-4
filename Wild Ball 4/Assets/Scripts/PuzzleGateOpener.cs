@@ -1,76 +1,110 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class PuzzleGateOpener : MonoBehaviour
 {
-    [Header("Ссылки на Аниматоры Створок")]
-    [Tooltip("Аниматор левой створки ворот")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РђРЅРёРјР°С‚РѕСЂС‹ РЎС‚РІРѕСЂРѕРє")]
+    [Tooltip("РђРЅРёРјР°С‚РѕСЂ Р»РµРІРѕР№ СЃС‚РІРѕСЂРєРё РІРѕСЂРѕС‚")]
     public Animator leftDoorAnimator;
-    [Tooltip("Аниматор правой створки ворот")]
+    [Tooltip("РђРЅРёРјР°С‚РѕСЂ РїСЂР°РІРѕР№ СЃС‚РІРѕСЂРєРё РІРѕСЂРѕС‚")]
     public Animator rightDoorAnimator;
 
-    [Header("Настройки Головоломки")]
-    [Tooltip("Сколько всего плит должны быть в правильном положении")]
-    public int requiredCorrectPlates = 4; // Должно совпадать с количеством плит
-    [Tooltip("Имя триггера в аниматорах створок для открытия")]
-    public string openAnimationTrigger = "Open"; // Имя триггера в Animator'ах створок
+    [Header("РќР°СЃС‚СЂРѕР№РєРё Р“РѕР»РѕРІРѕР»РѕРјРєРё")]
+    [Tooltip("РЎРєРѕР»СЊРєРѕ РІСЃРµРіРѕ РїР»РёС‚ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІ РїСЂР°РІРёР»СЊРЅРѕРј РїРѕР»РѕР¶РµРЅРёРё")]
+    public int requiredCorrectPlates = 4; // Р”РѕР»Р¶РЅРѕ СЃРѕРІРїР°РґР°С‚СЊ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј РїР»РёС‚
+    [Tooltip("РРјСЏ С‚СЂРёРіРіРµСЂР° РІ Р°РЅРёРјР°С‚РѕСЂР°С… СЃС‚РІРѕСЂРѕРє РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ")]
+    public string openAnimationTrigger = "Open"; // РРјСЏ С‚СЂРёРіРіРµСЂР° РІ Animator'Р°С… СЃС‚РІРѕСЂРѕРє
+    [Tooltip("UI СЌР»РµРјРµРЅС‚ РґР»СЏ РїРѕРґСЃРєР°Р·РєРё РІРѕСЂРѕС‚ (РµСЃР»Рё РµСЃС‚СЊ РѕС‚РґРµР»СЊРЅР°СЏ)")] // РЈС‚РѕС‡РЅРёР» Tooltip
+    public GameObject interactPromptUI; // РџРѕРґСЃРєР°Р·РєР° РґР»СЏ СЃР°РјРёС… РІРѕСЂРѕС‚ (РјРѕР¶РµС‚ Рё РЅРµ Р±С‹С‚СЊ)
+    [Tooltip("РўРµРі РѕР±СЉРµРєС‚Р° РёРіСЂРѕРєР°")]
+    public string playerTag = "Player";
 
-    // Приватные переменные состояния
-    private int currentCorrectPlates = 0; // Счетчик правильно повернутых плит
-    private bool isOpen = false;          // Ворота уже открыты?
+    // РџСЂРёРІР°С‚РЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ СЃРѕСЃС‚РѕСЏРЅРёСЏ
+    private int currentCorrectPlates = 0; // РЎС‡РµС‚С‡РёРє РїСЂР°РІРёР»СЊРЅРѕ РїРѕРІРµСЂРЅСѓС‚С‹С… РїР»РёС‚
+    private bool isOpen = false;          // Р’РѕСЂРѕС‚Р° СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹?
+
+    /// <summary>
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РіРѕР»РѕРІРѕР»РѕРјРєР° СЂРµС€РµРЅР° Рё РІРѕСЂРѕС‚Р° РѕС‚РєСЂС‹С‚С‹ (РёР»Рё РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ).
+    /// </summary>
+    public bool IsOpen => isOpen;
 
     void Start()
     {
-        // Проверки
+        // РџСЂРѕРІРµСЂРєРё
         if (leftDoorAnimator == null || rightDoorAnimator == null)
-            Debug.LogError("Не назначены аниматоры створок ворот на PuzzleGateOpener!", this);
+            Debug.LogError("РќРµ РЅР°Р·РЅР°С‡РµРЅС‹ Р°РЅРёРјР°С‚РѕСЂС‹ СЃС‚РІРѕСЂРѕРє РІРѕСЂРѕС‚ РЅР° PuzzleGateOpener!", this);
+        if (interactPromptUI != null) interactPromptUI.SetActive(false); // РЎРєСЂС‹С‚СЊ РїРѕРґСЃРєР°Р·РєСѓ РІРѕСЂРѕС‚ РїСЂРё СЃС‚Р°СЂС‚Рµ
         currentCorrectPlates = 0;
         isOpen = false;
     }
 
     /// <summary>
-    /// Вызывается из скрипта RotatingPlate, когда состояние плиты (правильное/неправильное) меняется.
+    /// Р’С‹Р·С‹РІР°РµС‚СЃСЏ РёР· СЃРєСЂРёРїС‚Р° RotatingPlate, РєРѕРіРґР° СЃРѕСЃС‚РѕСЏРЅРёРµ РїР»РёС‚С‹ (РїСЂР°РІРёР»СЊРЅРѕРµ/РЅРµРїСЂР°РІРёР»СЊРЅРѕРµ) РјРµРЅСЏРµС‚СЃСЏ.
     /// </summary>
-    /// <param name="plateBecameCorrect">True - если плита стала правильной, False - если стала неправильной.</param>
+    /// <param name="plateBecameCorrect">True - РµСЃР»Рё РїР»РёС‚Р° СЃС‚Р°Р»Р° РїСЂР°РІРёР»СЊРЅРѕР№, False - РµСЃР»Рё СЃС‚Р°Р»Р° РЅРµРїСЂР°РІРёР»СЊРЅРѕР№.</param>
     public void PlateStateChanged(bool plateBecameCorrect)
     {
-        if (isOpen) return; // Если ворота уже открыты, ничего не делаем
+        if (IsOpen) return; // Р•СЃР»Рё РІРѕСЂРѕС‚Р° СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹, РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 
         if (plateBecameCorrect)
         {
             currentCorrectPlates++;
-            Debug.Log($"Правильная плита! Всего правильных: {currentCorrectPlates}/{requiredCorrectPlates}");
+            Debug.Log($"РџСЂР°РІРёР»СЊРЅР°СЏ РїР»РёС‚Р°! Р’СЃРµРіРѕ РїСЂР°РІРёР»СЊРЅС‹С…: {currentCorrectPlates}/{requiredCorrectPlates}");
         }
         else
         {
             currentCorrectPlates--;
-            Debug.Log($"Плита стала неправильной! Всего правильных: {currentCorrectPlates}/{requiredCorrectPlates}");
+            Debug.Log($"РџР»РёС‚Р° СЃС‚Р°Р»Р° РЅРµРїСЂР°РІРёР»СЊРЅРѕР№! Р’СЃРµРіРѕ РїСЂР°РІРёР»СЊРЅС‹С…: {currentCorrectPlates}/{requiredCorrectPlates}");
         }
 
-        // Clamp на всякий случай (хотя не должно выходить за пределы)
+        // Clamp РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№
         currentCorrectPlates = Mathf.Clamp(currentCorrectPlates, 0, requiredCorrectPlates);
 
-        // Проверяем, достигнуто ли нужное количество
+        // РџСЂРѕРІРµСЂСЏРµРј, РґРѕСЃС‚РёРіРЅСѓС‚Рѕ Р»Рё РЅСѓР¶РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ
         if (currentCorrectPlates >= requiredCorrectPlates)
         {
             OpenGate();
         }
     }
 
-    // Метод открытия ворот
+    // РњРµС‚РѕРґ РѕС‚РєСЂС‹С‚РёСЏ РІРѕСЂРѕС‚
     private void OpenGate()
     {
-        if (isOpen) return; // Защита от повторного открытия
+        if (IsOpen) return; // Р—Р°С‰РёС‚Р° РѕС‚ РїРѕРІС‚РѕСЂРЅРѕРіРѕ РѕС‚РєСЂС‹С‚РёСЏ
 
-        isOpen = true;
-        Debug.Log("ГОЛОВОЛОМКА РЕШЕНА! Открываем ворота...");
+        isOpen = true; // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РџР•Р Р•Р” РґРµР№СЃС‚РІРёСЏРјРё
+        Debug.Log("Р“РћР›РћР’РћР›РћРњРљРђ Р Р•РЁР•РќРђ! РћС‚РєСЂС‹РІР°РµРј РІРѕСЂРѕС‚Р°...");
 
-        // Запускаем анимацию на обеих створках
+        // РЎРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ СЃР°РјРёС… РІРѕСЂРѕС‚, РµСЃР»Рё РѕРЅР° Р±С‹Р»Р°
+        if (interactPromptUI != null)
+            interactPromptUI.SetActive(false);
+
+        // Р—Р°РїСѓСЃРєР°РµРј Р°РЅРёРјР°С†РёСЋ РЅР° РѕР±РµРёС… СЃС‚РІРѕСЂРєР°С…
         if (leftDoorAnimator != null && !string.IsNullOrEmpty(openAnimationTrigger))
             leftDoorAnimator.SetTrigger(openAnimationTrigger);
         if (rightDoorAnimator != null && !string.IsNullOrEmpty(openAnimationTrigger))
             rightDoorAnimator.SetTrigger(openAnimationTrigger);
 
-        // Опционально: тут можно проиграть звук открытия, включить свет и т.д.
+        // РћРїС†РёРѕРЅР°Р»СЊРЅРѕ: С‚СѓС‚ РјРѕР¶РЅРѕ РїСЂРѕРёРіСЂР°С‚СЊ Р·РІСѓРє РѕС‚РєСЂС‹С‚РёСЏ, РІРєР»СЋС‡РёС‚СЊ СЃРІРµС‚ Рё С‚.Рґ.
+    }
+
+    // РўСЂРёРіРіРµСЂС‹ РґР»СЏ РїРѕРєР°Р·Р°/СЃРєСЂС‹С‚РёСЏ РїРѕРґСЃРєР°Р·РєРё РЎРђРњРРҐ РІРѕСЂРѕС‚ (РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ)
+    private void OnTriggerEnter(Collider other)
+    {
+        // РџРѕРєР°Р·С‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ РІРѕСЂРѕС‚, С‚РѕР»СЊРєРѕ РµСЃР»Рё РѕРЅРё Р·Р°РєСЂС‹С‚С‹
+        if (interactPromptUI != null && other.CompareTag(playerTag) && !IsOpen)
+        {
+            interactPromptUI.SetActive(true);
+            Debug.Log($"РРіСЂРѕРє РІРѕС€РµР» РІ Р·РѕРЅСѓ Р—РђРљР Р«РўР«РҐ РІСЂР°С‚ {gameObject.name}.");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Р’СЃРµРіРґР° СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ РІРѕСЂРѕС‚ РїСЂРё РІС‹С…РѕРґРµ
+        if (interactPromptUI != null && other.CompareTag(playerTag))
+        {
+            interactPromptUI.SetActive(false);
+            Debug.Log($"РРіСЂРѕРє РІС‹С€РµР» РёР· Р·РѕРЅС‹ РІСЂР°С‚ {gameObject.name}.");
+        }
     }
 }
-

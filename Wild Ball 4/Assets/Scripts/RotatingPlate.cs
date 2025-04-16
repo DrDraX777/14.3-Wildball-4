@@ -1,161 +1,174 @@
-using UnityEngine;
-using System.Collections; // Для корутины вращения
-using TMPro; // или UnityEngine.UI
+п»їusing UnityEngine;
+using System.Collections;
+using TMPro; // РёР»Рё UnityEngine.UI
 
-[RequireComponent(typeof(Collider))] // Убедимся, что есть коллайдер
+[RequireComponent(typeof(Collider))]
 public class RotatingPlate : MonoBehaviour
 {
-    [Header("Настройки Вращения")]
-    [Tooltip("Скорость вращения (градусов в секунду)")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё Р’СЂР°С‰РµРЅРёСЏ")]
+    [Tooltip("РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°С‰РµРЅРёСЏ (РіСЂР°РґСѓСЃРѕРІ РІ СЃРµРєСѓРЅРґСѓ)")]
     public float rotationSpeed = 180f;
-    [Tooltip("Целевой угол вращения по Z (0, 90, 180, 270), к которому должна прийти плита")]
-    [Range(0, 3)] // 0=0, 1=90, 2=180, 3=270
-    public int targetRotationStep = 0; // ЗАДАТЬ В ИНСПЕКТОРЕ для каждой плиты! 0-3
+    [Tooltip("Р¦РµР»РµРІРѕР№ С€Р°Рі РІСЂР°С‰РµРЅРёСЏ РїРѕ Z (0=0В°, 1=90В°, 2=180В°, 3=270В°)")]
+    [Range(0, 3)]
+    public int targetRotationStep = 0; // РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ!
 
-    [Header("Ссылки")]
-    [Tooltip("Контроллер ворот, который нужно уведомить")]
-    public PuzzleGateOpener gateController; // Перетащить объект ворот сюда
-    [Tooltip("UI элемент для подсказки 'Нажмите E'")]
-    public GameObject interactPromptUI; // Перетащить UI текст/картинку сюда
+    [Header("РЎСЃС‹Р»РєРё")]
+    [Tooltip("РљРѕРЅС‚СЂРѕР»Р»РµСЂ РІРѕСЂРѕС‚, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРІРµРґРѕРјРёС‚СЊ")]
+    public PuzzleGateOpener gateController;
+    [Tooltip("UI СЌР»РµРјРµРЅС‚ РґР»СЏ РїРѕРґСЃРєР°Р·РєРё 'РќР°Р¶РјРёС‚Рµ E'")]
+    public GameObject interactPromptUI;
 
-    [Header("Взаимодействие")]
-    [Tooltip("Тег объекта игрока")]
+    [Header("Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ")]
+    [Tooltip("РўРµРі РѕР±СЉРµРєС‚Р° РёРіСЂРѕРєР°")]
     public string playerTag = "Player";
 
-    // Приватные переменные состояния
+    // РЎРѕСЃС‚РѕСЏРЅРёРµ
     private bool playerInRange = false;
     private bool isRotating = false;
-    private int currentRotationStep = 0; // Текущая позиция (0=0, 1=90, 2=180, 3=270)
+    private int currentRotationStep = 0;
     private bool isCorrectlyRotated = false;
-    private Quaternion initialRotation; // Запомним начальное вращение для расчета шагов
 
     void Start()
     {
-        // Проверки ссылок
+        // РџСЂРѕРІРµСЂРєРё СЃСЃС‹Р»РѕРє
         if (gateController == null)
-            Debug.LogError($"Плита '{gameObject.name}' не имеет ссылки на PuzzleGateOpener!", this);
+            Debug.LogError($"РџР»РёС‚Р° '{gameObject.name}' РЅРµ РёРјРµРµС‚ СЃСЃС‹Р»РєРё РЅР° PuzzleGateOpener!", this);
         if (interactPromptUI != null)
             interactPromptUI.SetActive(false);
         else
-            Debug.LogWarning($"Плита '{gameObject.name}' не имеет ссылки на UI подсказку 'Нажмите Е'.", this);
+            Debug.LogWarning($"РџР»РёС‚Р° '{gameObject.name}' РЅРµ РёРјРµРµС‚ СЃСЃС‹Р»РєРё РЅР° UI РїРѕРґСЃРєР°Р·РєСѓ 'РќР°Р¶РјРёС‚Рµ Р•'.", this);
 
-        // Настройка коллайдера
+        // РќР°СЃС‚СЂРѕР№РєР° РєРѕР»Р»Р°Р№РґРµСЂР°
         Collider col = GetComponent<Collider>();
         if (!col.isTrigger)
         {
-            Debug.LogWarning($"Коллайдер на плите '{gameObject.name}' не является триггером. Устанавливаю isTrigger = true.", this);
+            Debug.LogWarning($"РљРѕР»Р»Р°Р№РґРµСЂ РЅР° РїР»РёС‚Рµ '{gameObject.name}' РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‚СЂРёРіРіРµСЂРѕРј. РЈСЃС‚Р°РЅР°РІР»РёРІР°СЋ isTrigger = true.", this);
             col.isTrigger = true;
         }
 
-        // Определяем начальный шаг по текущему вращению (упрощенно)
-        initialRotation = transform.localRotation;
-        // TODO: Если плиты изначально не на 0 градусов, нужно точнее определить currentRotationStep
-        currentRotationStep = 0; // Пока предполагаем старт с 0 градусов
+        // РћРїСЂРµРґРµР»РµРЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ С€Р°РіР°
+        float initialZ = Mathf.Repeat(transform.localRotation.eulerAngles.z, 360f); // РЈРіРѕР» 0..360
+        currentRotationStep = Mathf.RoundToInt(initialZ / 90.0f) % 4; // РћРєСЂСѓРіР»СЏРµРј РґРѕ Р±Р»РёР¶Р°Р№С€РµРіРѕ С€Р°РіР° 0, 1, 2, 3
+        Debug.Log($"РџР»РёС‚Р° '{gameObject.name}': РќР°С‡Р°Р»СЊРЅС‹Р№ СѓРіРѕР» Z ~{initialZ:F1}В°, РѕРїСЂРµРґРµР»РµРЅ РЅР°С‡Р°Р»СЊРЅС‹Р№ С€Р°Рі: {currentRotationStep}");
 
-        CheckIfCorrect(); // Проверить начальное состояние
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»СЊРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ isCorrectlyRotated Р‘Р•Р— СѓРІРµРґРѕРјР»РµРЅРёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
+        isCorrectlyRotated = (currentRotationStep == targetRotationStep);
     }
 
     void Update()
     {
-        // Проверяем нажатие E ТОЛЬКО если игрок рядом И плита не вращается сейчас
-        if (playerInRange && !isRotating && Input.GetKeyDown(KeyCode.E))
+        // РџСЂРѕРІРµСЂСЏРµРј РЅР°Р¶Р°С‚РёРµ E РўРћР›Р¬РљРћ РµСЃР»Рё РёРіСЂРѕРє СЂСЏРґРѕРј, РїР»РёС‚Р° РЅРµ РІСЂР°С‰Р°РµС‚СЃСЏ РЎР•Р™Р§РђРЎ, Р Р’РћР РћРўРђ Р—РђРљР Р«РўР«
+        if (playerInRange && !isRotating && gateController != null && !gateController.IsOpen && Input.GetKeyDown(KeyCode.E))
         {
             StartRotation();
         }
     }
 
-    // Когда игрок входит в триггер плиты
+    // РљРѕРіРґР° РёРіСЂРѕРє РІС…РѕРґРёС‚ РІ С‚СЂРёРіРіРµСЂ РїР»РёС‚С‹
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             playerInRange = true;
-            // Показываем подсказку "Нажмите Е", ТОЛЬКО если плита ЕЩЕ НЕ в правильном положении
-            if (interactPromptUI != null && !isCorrectlyRotated)
+
+            // РџРѕРєР°Р·С‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ, РµСЃР»Рё: РёРіСЂРѕРє РІ Р·РѕРЅРµ, РїР»РёС‚Р° РќР• РІСЂР°С‰Р°РµС‚СЃСЏ, Р’РћР РћРўРђ Р—РђРљР Р«РўР« Рё РїРѕРґСЃРєР°Р·РєР° РЅР°Р·РЅР°С‡РµРЅР°
+            if (interactPromptUI != null && !isRotating && gateController != null && !gateController.IsOpen)
+            {
                 interactPromptUI.SetActive(true);
-            Debug.Log($"Игрок вошел в зону плиты {gameObject.name}.");
+            }
+            Debug.Log($"РРіСЂРѕРє РІРѕС€РµР» РІ Р·РѕРЅСѓ РїР»РёС‚С‹ {gameObject.name}.");
         }
     }
 
-    // Когда игрок выходит из триггера плиты
+    // РљРѕРіРґР° РёРіСЂРѕРє РІС‹С…РѕРґРёС‚ РёР· С‚СЂРёРіРіРµСЂР° РїР»РёС‚С‹
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
             playerInRange = false;
-            // Скрываем подсказку "Нажмите Е"
+            // Р’СЃРµРіРґР° СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ РїСЂРё РІС‹С…РѕРґРµ
             if (interactPromptUI != null)
+            {
                 interactPromptUI.SetActive(false);
-            Debug.Log($"Игрок вышел из зоны плиты {gameObject.name}.");
+            }
+            Debug.Log($"РРіСЂРѕРє РІС‹С€РµР» РёР· Р·РѕРЅС‹ РїР»РёС‚С‹ {gameObject.name}.");
         }
     }
 
-    // Запускает процесс вращения
+    // Р—Р°РїСѓСЃРєР°РµС‚ РїСЂРѕС†РµСЃСЃ РІСЂР°С‰РµРЅРёСЏ
     private void StartRotation()
     {
-        if (isRotating) return; // Уже вращаемся
+        // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РєРѕСЂСѓС‚РёРЅС‹
+        if (isRotating || gateController == null || gateController.IsOpen) return;
 
         isRotating = true;
-        if (interactPromptUI != null) // Прячем подсказку во время вращения
+
+        // РџСЂСЏС‡РµРј РїРѕРґСЃРєР°Р·РєСѓ РЅР° РІСЂРµРјСЏ РІСЂР°С‰РµРЅРёСЏ
+        if (interactPromptUI != null)
             interactPromptUI.SetActive(false);
 
-        // Вычисляем следующий шаг и целевой угол
-        int nextStep = (currentRotationStep + 1) % 4; // Цикл 0 -> 1 -> 2 -> 3 -> 0
+        // Р’С‹С‡РёСЃР»СЏРµРј СЃР»РµРґСѓСЋС‰РёР№ С€Р°Рі (РїРѕ С‡Р°СЃРѕРІРѕР№ СЃС‚СЂРµР»РєРµ) Рё С†РµР»РµРІРѕР№ СѓРіРѕР»
+        int nextStep = (currentRotationStep + 1) % 4;
         float targetAngleZ = nextStep * 90.0f;
 
-        // Создаем целевое вращение (относительно начального, если оно было не 0, ИЛИ просто по Z)
-        // Проще работать с абсолютными углами 0, 90, 180, 270
+        // РЎРѕР·РґР°РµРј С†РµР»РµРІРѕРµ РІСЂР°С‰РµРЅРёРµ, СЃРѕС…СЂР°РЅСЏСЏ С‚РµРєСѓС‰РёРµ X Рё Y
         Quaternion targetRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, targetAngleZ);
-        // Quaternion targetRotation = initialRotation * Quaternion.Euler(0, 0, targetAngleZ); // Если вращаем относительно начального
 
-        Debug.Log($"Плита {gameObject.name}: Вращаем с шага {currentRotationStep} на шаг {nextStep} (угол {targetAngleZ})");
+        Debug.Log($"РџР»РёС‚Р° {gameObject.name}: Р’СЂР°С‰Р°РµРј СЃ С€Р°РіР° {currentRotationStep} РЅР° С€Р°Рі {nextStep} (СѓРіРѕР» {targetAngleZ})");
         StartCoroutine(RotateCoroutine(targetRotation, nextStep));
     }
 
-    // Корутина для плавного вращения
+    // РљРѕСЂСѓС‚РёРЅР° РґР»СЏ РїР»Р°РІРЅРѕРіРѕ РІСЂР°С‰РµРЅРёСЏ
     IEnumerator RotateCoroutine(Quaternion targetLocalRotation, int nextStep)
     {
         Quaternion startLocalRotation = transform.localRotation;
         float time = 0;
-        float duration = 90.0f / rotationSpeed; // Время на поворот на 90 градусов
+        // Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р·Р°РІРёСЃРёС‚ С‚РѕР»СЊРєРѕ РѕС‚ 90 РіСЂР°РґСѓСЃРѕРІ Рё СЃРєРѕСЂРѕСЃС‚Рё
+        float duration = Mathf.Abs(90.0f / rotationSpeed);
+        if (duration <= 0) duration = 0.1f; // Р—Р°С‰РёС‚Р° РѕС‚ РґРµР»РµРЅРёСЏ РЅР° РЅРѕР»СЊ
 
         while (time < duration)
         {
+            // Slerp РґР»СЏ РїР»Р°РІРЅРѕРіРѕ СЃС„РµСЂРёС‡РµСЃРєРѕРіРѕ РІСЂР°С‰РµРЅРёСЏ
             transform.localRotation = Quaternion.Slerp(startLocalRotation, targetLocalRotation, time / duration);
             time += Time.deltaTime;
-            yield return null; // Ждем следующего кадра
+            yield return null; // Р–РґРµРј СЃР»РµРґСѓСЋС‰РµРіРѕ РєР°РґСЂР°
         }
 
-        // Гарантируем точное конечное положение
+        // Р“Р°СЂР°РЅС‚РёСЂСѓРµРј С‚РѕС‡РЅРѕРµ РєРѕРЅРµС‡РЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ
         transform.localRotation = targetLocalRotation;
         currentRotationStep = nextStep;
-        isRotating = false;
+        isRotating = false; // Р’Р°Р¶РЅРѕ! РЎР±СЂР°СЃС‹РІР°РµРј С„Р»Р°Рі РІСЂР°С‰РµРЅРёСЏ Р”Рћ РїСЂРѕРІРµСЂРѕРє
 
-        // Проверяем, стала ли плита в правильное положение
+        // РџСЂРѕРІРµСЂСЏРµРј РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РїРѕР»РѕР¶РµРЅРёСЏ (Рё СѓРІРµРґРѕРјР»СЏРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ, Р•РЎР›Р РІРѕСЂРѕС‚Р° РµС‰Рµ РЅРµ РѕС‚РєСЂС‹С‚С‹)
         CheckIfCorrect();
-        // Показать подсказку снова, если игрок все еще в зоне И плита все еще НЕ правильная
-        if (playerInRange && interactPromptUI != null && !isCorrectlyRotated)
-            interactPromptUI.SetActive(true);
 
-        Debug.Log($"Плита {gameObject.name}: Вращение завершено на шаге {currentRotationStep}. Правильно: {isCorrectlyRotated}");
+        // РџРѕРєР°Р·С‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ РЎРќРћР’Рђ, РµСЃР»Рё: РёРіСЂРѕРє РІСЃРµ РµС‰Рµ РІ Р·РѕРЅРµ, РїРѕРґСЃРєР°Р·РєР° РµСЃС‚СЊ, Р Р’РћР РћРўРђ Р—РђРљР Р«РўР«
+        if (playerInRange && interactPromptUI != null && gateController != null && !gateController.IsOpen)
+        {
+            interactPromptUI.SetActive(true);
+        }
+
+        Debug.Log($"РџР»РёС‚Р° {gameObject.name}: Р’СЂР°С‰РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ РЅР° С€Р°РіРµ {currentRotationStep}. РџСЂР°РІРёР»СЊРЅРѕ: {isCorrectlyRotated}");
     }
 
-    // Проверяет, находится ли плита в целевом положении и уведомляет контроллер ворот
+    // РџСЂРѕРІРµСЂСЏРµС‚, РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РїР»РёС‚Р° РІ С†РµР»РµРІРѕРј РїРѕР»РѕР¶РµРЅРёРё Рё СѓРІРµРґРѕРјР»СЏРµС‚ РєРѕРЅС‚СЂРѕР»Р»РµСЂ РІРѕСЂРѕС‚
     void CheckIfCorrect()
     {
+        // Р•СЃР»Рё РІРѕСЂРѕС‚Р° СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹, РїСЂРѕСЃС‚Рѕ РѕР±РЅРѕРІР»СЏРµРј Р»РѕРєР°Р»СЊРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ Рё РІС‹С…РѕРґРёРј
+        if (gateController != null && gateController.IsOpen)
+        {
+            isCorrectlyRotated = (currentRotationStep == targetRotationStep);
+            return;
+        }
+
         bool previouslyCorrect = isCorrectlyRotated;
         isCorrectlyRotated = (currentRotationStep == targetRotationStep);
 
-        // Если состояние изменилось (была неправильной -> стала правильной, ИЛИ наоборот)
+        // РЈРІРµРґРѕРјР»СЏРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ С‚РѕР»СЊРєРѕ РµСЃР»Рё СЃРѕСЃС‚РѕСЏРЅРёРµ РёР·РјРµРЅРёР»РѕСЃСЊ Р РєРѕРЅС‚СЂРѕР»Р»РµСЂ СЃСѓС‰РµСЃС‚РІСѓРµС‚
         if (isCorrectlyRotated != previouslyCorrect && gateController != null)
         {
             gateController.PlateStateChanged(isCorrectlyRotated);
-        }
-
-        // Если плита стала правильной, скрываем подсказку "Е" навсегда для этой плиты
-        if (isCorrectlyRotated && interactPromptUI != null)
-        {
-            interactPromptUI.SetActive(false);
         }
     }
 }

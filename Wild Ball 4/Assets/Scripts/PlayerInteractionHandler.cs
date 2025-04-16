@@ -52,7 +52,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         {
             StartRespawnWithDeathEffect();
         }
-        // ...
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -71,6 +71,27 @@ public class PlayerInteractionHandler : MonoBehaviour
 
 
     }
+
+    public bool HasEnoughCoins(int amount)
+    {
+        return coinCount >= amount;
+    }
+    public bool SpendCoins(int amount)
+    {
+        if (HasEnoughCoins(amount))
+        {
+            coinCount -= amount;
+            UpdateCoinUI();
+            Debug.Log($"Потрачено {amount} монет. Осталось: {coinCount}");
+            return true; // Успешно потратили
+        }
+        else
+        {
+            Debug.Log($"Недостаточно монет для траты {amount}. Текущий баланс: {coinCount}");
+            return false; // Недостаточно монет
+        }
+    }
+
 
     public void AddCoins()
     {       

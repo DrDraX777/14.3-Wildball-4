@@ -360,6 +360,7 @@
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/DoorController.cs"
 "Assets/Scripts/GateController.cs"
+"Assets/Scripts/HatchOpener.cs"
 "Assets/Scripts/InvisHint.cs"
 "Assets/Scripts/KinematicPusher.cs"
 "Assets/Scripts/LeverController.cs"
