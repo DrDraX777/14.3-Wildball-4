@@ -3,32 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\hatchopener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hatchopener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\teleportmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\teleportmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\playerinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\teleportzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\teleportzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\rotatingplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rotatingplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\puzzlegateopener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\puzzlegateopener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\levercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\gatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\gatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\bonuspickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bonuspickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\levercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\gameexitbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameexitbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|c:\\users\\drdra\\desktop\\unitylesson\\14.3-wildball-4\\wild ball 4\\assets\\scripts\\sceneloaderbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sceneloaderbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\playerinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\platformnotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platformnotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\gatehinttrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gatehinttrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\fallingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fallingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459B7B0-3479-A226-D984-5FFD6D706891}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,92 +67,170 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HatchOpener.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\HatchOpener.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HatchOpener.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\HatchOpener.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HatchOpener.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABIAAAAAAAAAA==",
+              "Title": "TeleportManager.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\TeleportManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TeleportManager.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\TeleportManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TeleportManager.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAQwOwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T03:26:15.778Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PuzzleGateOpener.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PuzzleGateOpener.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PuzzleGateOpener.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PuzzleGateOpener.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PuzzleGateOpener.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAqwG4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T09:42:47.577Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RotatingPlate.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\RotatingPlate.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\RotatingPlate.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\RotatingPlate.cs",
-              "RelativeToolTip": "Assets\\Scripts\\RotatingPlate.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAqwK4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T09:42:25.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GateController.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GateController.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GateController.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAqwHgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T06:32:11.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LeverController.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\LeverController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\LeverController.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\LeverController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\LeverController.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAcwHMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T08:19:28.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BonusPickup.cs",
-              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\BonusPickup.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BonusPickup.cs",
-              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\BonusPickup.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BonusPickup.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAYwDkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T07:53:06.071Z",
+              "WhenOpened": "2025-05-10T05:59:58.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TeleportZone.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\TeleportZone.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TeleportZone.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\TeleportZone.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TeleportZone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T05:57:28.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GateController.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GateController.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GateController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T09:30:35.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeverController.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\LeverController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LeverController.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\LeverController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LeverController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T09:20:12.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameExitButton.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GameExitButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameExitButton.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GameExitButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameExitButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T09:16:12.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SceneLoaderButton.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\SceneLoaderButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneLoaderButton.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\SceneLoaderButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneLoaderButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T08:50:01.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PauseMenu.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PauseMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PauseMenu.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PauseMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PauseMenu.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T08:08:52.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlatformNotifier.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PlatformNotifier.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlatformNotifier.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PlatformNotifier.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlatformNotifier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T06:29:49.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GateHintTrigger.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateHintTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GateHintTrigger.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GateHintTrigger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GateHintTrigger.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwDoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T03:39:09.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Checkpoint.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\Checkpoint.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Checkpoint.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\Checkpoint.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Checkpoint.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA5wEoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:36:32.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PlayerInteractionHandler.cs",
               "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PlayerInteractionHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerInteractionHandler.cs",
               "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\PlayerInteractionHandler.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerInteractionHandler.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAiwFwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAQwGIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T05:03:41.08Z",
+              "WhenOpened": "2025-05-05T09:03:32.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FallingPlatform.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\FallingPlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FallingPlatform.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\FallingPlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FallingPlatform.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwI8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T06:20:32.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\drdra\\Desktop\\unitylesson\\14.3-Wildball-4\\Wild Ball 4\\Assets\\Scripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAQwE8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T09:41:14.814Z",
               "EditorCaption": ""
             }
           ]
